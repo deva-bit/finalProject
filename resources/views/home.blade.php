@@ -139,115 +139,46 @@
                 <div class="col-sm-7">
                     <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
                     <div class="header-left">
-                        <button class="search-trigger"><i class="fa fa-search"></i></button>
-                        <div class="form-inline">
-                            <form class="search-form">
-                                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
-                                <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
-                            </form>
-                        </div>
+                       
 
                         
 
-                        <div class="dropdown for-message">
-                            <button class="btn btn-secondary dropdown-toggle" type="button"
-                                id="message"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="ti-email"></i>
-                                <span class="count bg-primary">9</span>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="message">
-                                <p class="red">You have 4 Mails</p>
-                                <a class="dropdown-item media bg-flat-color-1" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="images/avatar/1.jpg"></span>
-                                <span class="message media-body">
-                                    <span class="name float-left">Jonathan Smith</span>
-                                    <span class="time float-right">Just now</span>
-                                        <p>Hello, this is an example msg</p>
-                                </span>
-                            </a>
-                                <a class="dropdown-item media bg-flat-color-4" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="images/avatar/2.jpg"></span>
-                                <span class="message media-body">
-                                    <span class="name float-left">Jack Sanders</span>
-                                    <span class="time float-right">5 minutes ago</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
-                                </span>
-                            </a>
-                                <a class="dropdown-item media bg-flat-color-5" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="images/avatar/3.jpg"></span>
-                                <span class="message media-body">
-                                    <span class="name float-left">Cheryl Wheeler</span>
-                                    <span class="time float-right">10 minutes ago</span>
-                                        <p>Hello, this is an example msg</p>
-                                </span>
-                            </a>
-                                <a class="dropdown-item media bg-flat-color-3" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="images/avatar/4.jpg"></span>
-                                <span class="message media-body">
-                                    <span class="name float-left">Rachel Santos</span>
-                                    <span class="time float-right">15 minutes ago</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
-                                </span>
-                            </a>
-                            </div>
-                        </div>
+                      
                     </div>
                 </div>
 
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
-                        </a>
-
+            
                       
-                    <div class="language-select dropdown" id="language-select">
-                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
-                            <i class="flag-icon flag-icon-us"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="language">
-                            <div class="dropdown-item">
-                                <span class="flag-icon flag-icon-fr"></span>
-                            </div>
-                            <div class="dropdown-item">
-                                <i class="flag-icon flag-icon-es"></i>
-                            </div>
-                            <div class="dropdown-item">
-                                <i class="flag-icon flag-icon-us"></i>
-                            </div>
-                            <div class="dropdown-item">
-                                <i class="flag-icon flag-icon-it"></i>
-                            </div>
-                        </div>
-                    </div>
+                     
+                            @if (Route::has('login'))
+                                <div class="hidden fixed top-0 right-0  sm:block ">
+                            @auth
+                
+                            <x-app-layout>
+
+                            </x-app-layout>
+                      
+                             @else
+                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+
+                        @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
+
 
                 </div>
-            </div>
+           
 
         </header><!-- /header -->
         <!-- Header-->
 
-        <div class="breadcrumbs">
-            <div class="col-sm-4">
-                <div class="page-header float-left">
-                    <div class="page-title">
-                        <h1>Dashboard</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-8">
-                <div class="page-header float-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb text-right">
-                            <li class="active">Dashboard</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="content mt-3">
+        <!-- <div class="content mt-3">
 
             <div class="col-sm-12">
                 <div class="alert  alert-success alert-dismissible fade show" role="alert">
@@ -333,7 +264,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h4 class="mb-0">
+                        <!-- <h4 class="mb-0">
                             <span class="count">10468</span>
                         </h4>
                         <p class="text-light">Members online</p>
@@ -344,10 +275,10 @@
                         <canvas id="widgetChart3"></canvas>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!--/.col-->
 
-            <div class="col-sm-6 col-lg-3">
+            <!-- <div class="col-sm-6 col-lg-3">
                 <div class="card text-white bg-flat-color-4">
                     <div class="card-body pb-0">
                         <div class="dropdown float-right">
@@ -373,10 +304,10 @@
 
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!--/.col-->
 
-            <div class="col-lg-3 col-md-6">
+            <!-- <div class="col-lg-3 col-md-6">
                 <div class="social-box facebook">
                     <i class="fa fa-facebook"></i>
                     <ul>
@@ -389,12 +320,12 @@
                             <span>feeds</span>
                         </li>
                     </ul>
-                </div>
+                </div> -->
                 <!--/social-box-->
             </div>
             <!--/.col-->
 
-
+<!-- 
             <div class="col-lg-3 col-md-6">
                 <div class="social-box twitter">
                     <i class="fa fa-twitter"></i>
@@ -408,11 +339,11 @@
                             <span>tweets</span>
                         </li>
                     </ul>
-                </div>
+                </div> -->
                 <!--/social-box-->
             </div>
             <!--/.col-->
-
+<!-- 
 
             <div class="col-lg-3 col-md-6">
                 <div class="social-box linkedin">
@@ -427,12 +358,12 @@
                             <span>feeds</span>
                         </li>
                     </ul>
-                </div>
+                </div> -->
                 <!--/social-box-->
             </div>
             <!--/.col-->
 
-
+<!-- 
             <div class="col-lg-3 col-md-6">
                 <div class="social-box google-plus">
                     <i class="fa fa-google-plus"></i>
@@ -451,16 +382,16 @@
             </div>
             <!--/.col-->
 
-            <div class="col-xl-6">
+            <!-- <div class="col-xl-6">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-4">
                                 <h4 class="card-title mb-0">Traffic</h4>
                                 <div class="small text-muted">October 2017</div>
-                            </div>
+                            </div> -->
                             <!--/.col-->
-                            <div class="col-sm-8 hidden-sm-down">
+                            <!-- <div class="col-sm-8 hidden-sm-down">
                                 <button type="button" class="btn btn-primary float-right bg-flat-color-1"><i class="fa fa-cloud-download"></i></button>
                                 <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
                                     <div class="btn-group mr-3" data-toggle="buttons" aria-label="First group">
@@ -475,13 +406,13 @@
                                         </label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <!--/.col-->
 
-
-                        </div>
+<!-- 
+                        </div> -->
                         <!--/.row-->
-                        <div class="chart-wrapper mt-4">
+                        <!-- <div class="chart-wrapper mt-4">
                             <canvas id="trafficChart" style="height:200px;" height="200"></canvas>
                         </div>
 
@@ -589,10 +520,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
 
-            <div class="col-xl-3 col-lg-6">
+            <!-- <div class="col-xl-3 col-lg-6">
                 <div class="card">
                     <div class="card-body">
                         <div class="stat-widget-one">
@@ -604,8 +535,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
+            </div> -->
+<!-- 
             <div class="col-xl-3 col-lg-6">
                 <div class="card">
                     <div class="card-body">
@@ -618,9 +549,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="col-xl-6">
+            <!-- <div class="col-xl-6">
                 <div class="card">
                     <div class="card-header">
                         <h4>World</h4>
@@ -628,9 +559,9 @@
                     <div class="Vector-map-js">
                         <div id="vmap" class="vmap" style="height: 265px;"></div>
                     </div>
-                </div>
+                </div> --> -->
                 <!-- /# card -->
-            </div>
+            </div> -->
 
 
         </div> <!-- .content -->

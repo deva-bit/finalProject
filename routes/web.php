@@ -18,6 +18,8 @@ use App\Http\Controllers\homeControl;
 // });
 Route::get("/",[homeControl::class,'index']);
 
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+Route::get("redirect",[homeControl::class,'redirectFunct']);
