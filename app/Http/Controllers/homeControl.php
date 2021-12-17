@@ -64,7 +64,7 @@ class homeControl extends Controller
     {
         $data=manager::all();
         $x=project::find($project_id);
-        return view('projectManager.edit_manager',$x,$data);
+        return view('projectManager.edit_manager',['x'=>$x],['data'=>$data]);
       
         
     }
@@ -72,6 +72,7 @@ class homeControl extends Controller
     function update(Request $req)
     {
         $data=project::find($req->project_id);
+        $data->project_id=$req->project_id;
         $data->project_type=$req->select;
         $data->project_name=$req->project;
         $data->project_leader=$req->select1;

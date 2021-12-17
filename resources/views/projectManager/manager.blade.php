@@ -132,7 +132,7 @@
                     <div class="col col-md-3"><label for="select" class=" form-control-label">Project Type</label></div>
                     <div class="col-12 col-md-9">
                         <select name="select" id="select" class="form-control">
-                           
+                            <option value="" selected disabled hidden>Select Project Type</option>
                             <option value="1">Consultancy project</option>
                             <option value="2">Research grant project</option>
                            
@@ -152,6 +152,7 @@
                        
                         @foreach($data as $data) 
                         @if ($data->role=='1') 
+                        <option value="" selected disabled hidden>Select Project Leader</option>
                         <option value="{{$data->id }}">{{ $data->name }}</option>
                         @endif
                         @endforeach

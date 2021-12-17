@@ -144,7 +144,7 @@
                                     @foreach ($x as $paper)
                                      @if($paper->id)
                                         <tr>
-                                            <td>@php($count=0)@php($count++) {{$count++}}</td>
+                                        <td scope="row">{{ $loop->iteration }}</td>
                                             <td>
                                                 @if($paper->project_type=='1') 
                                             
