@@ -59,14 +59,14 @@
              
               
             </div>
-
+<br>
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href=""> <i class="menu-icon fa fa-dashboard"></i>Create Project </a>
+                        <a href="{{url('/redirect')}}"> <i class="menu-icon fa fa-pencil-square-o"></i>Create Project </a>
                     </li>
                     <li class="active">
-                        <a href=""> <i class="menu-icon fa fa-dashboard"></i>Manage Project </a>
+                        <a href="{{url('/manageproject')}}"> <i class="menu-icon fa fa-dashboard"></i>Manage Project </a>
                     </li>
                   
                 </ul>
@@ -109,24 +109,22 @@
                    
 
                 </div>
-            </div>
+            </div> <center><strong style ="padding: 25px 50px;" class="card-title">Project Manager</strong><center>
 
         </header><!-- /header -->
         <!-- Header-->
 
-        <!-- <div class="breadcrumbs">
-            <div class="col-sm-4">
-                <div class="page-header float-left">
+     
                     <div class="page-title">
                        
                     </div>
-                </div>
-            </div> -->
-
+              
+                    <div class="content mt-3">
 <div class="col-lg-10">
     <div class="card">
         <div class="card-header">
-            <strong><center>Project Registration Form</center></strong> 
+            
+            <strong><center>Create Project</center></strong> 
         <div class="card-body card-block">
             <form action="/add" method="post" enctype="multipart/form-data" class="form-horizontal">
             @csrf
@@ -151,9 +149,11 @@
                     <div class="col col-md-3"><label for="select" class=" form-control-label">Project Leader</label></div>
                     <div class="col-12 col-md-9">
                         <select name="select1" id="select" class="form-control">
-                        @foreach($data as $data)
                        
-                        <option value="{{ $data->role=='1' }}">{{ $data->name }}</option>
+                        @foreach($data as $data) 
+                        @if ($data->role=='1') 
+                        <option value="{{$data->id }}">{{ $data->name }}</option>
+                        @endif
                         @endforeach
                         </select>
                     </div>
@@ -166,19 +166,19 @@
            
      
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary btn-sm">
-                <i class="fa fa-dot-circle-o"></i> Submit
+            <button type="submit"  onclick="myFunction()" class="btn btn-primary btn-sm">
+                <i class="fa fa-dot-circle-o"></i>Submit
             </button>
             <button type="reset" class="btn btn-danger btn-sm">
                 <i class="fa fa-ban"></i> Reset
             </button>
         </div>
-        </form>
+       
     </div>
 </div><!-- .animated -->
 </div><!-- .content -->
 
-
+</div>
 </div><!-- /#right-panel -->
 
 <!-- Right Panel -->
@@ -202,6 +202,13 @@
 <script src="vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
 <script src="assets/js/init-scripts/data-table/datatables-init.js"></script>
 
+<script>
+    
+function myFunction() {
+  alert("Successfully created the project!");
+}
+
+</script>
 
 </body>
 

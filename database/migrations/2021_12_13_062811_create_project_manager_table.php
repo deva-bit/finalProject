@@ -14,7 +14,7 @@ class CreateProjectManagerTable extends Migration
     public function up()
     {
         Schema::create('project_manager', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('project_id');
             $table->string('project_type');
             $table->string('project_name');
             $table->string('project_leader');

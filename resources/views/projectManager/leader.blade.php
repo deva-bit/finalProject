@@ -16,31 +16,31 @@
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
 
+
     <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="vendors/jqvmap/dist/jqvmap.min.css">
-
+    <link rel="stylesheet" href="vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
 
     <link rel="stylesheet" href="assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <style>
+        .modal-backdrop {
+  z-index: -1;
+}
+.modal.open {
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <title>Drixo - Responsive Booststrap 4 Admin & Dashboard</title>
-    <meta content="Admin Dashboard" name="description" />
-    <meta content="ThemeDesign" name="author" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  opacity:1;
 
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+  visibility:visible;
 
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+}
 
+        </style>
 </head>
 
 <body>
@@ -54,21 +54,20 @@
             <div class="navbar-header">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
-                </button>  
+                </button>
                 <a class="navbar-brand " ><img src="urnd.jpg" alt="Logo"></a>
-             
-              
+                
             </div>
+            <br>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href=""> <i class="menu-icon fa fa-dashboard"></i>Create Project </a>
-                    </li>
-                    <li class="active">
-                        <a href=""> <i class="menu-icon fa fa-dashboard"></i>Manage Project </a>
-                    </li>
-                  
+                <li class="active">
+                        <a href="{{url('/redirect')}}"> <i class="menu-icon fa fa-pencil-square-o"></i>View Project </a>
+                </li>
+                <li class="active">
+                        <a href="{{url('/manageproject')}}"> <i class="menu-icon fa fa-dashboard"></i>Manage Project </a>
+                </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -88,123 +87,190 @@
                 <div class="col-sm-7">
                     <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
                     <div class="header-left">
-                   
-                       
+                      
+
+                        
 
                        
                     </div>
                 </div>
 
                 <div class="col-sm-5">
+                    
                     <div class="user-area dropdown float-right">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       
+                            
                             <x-app-layout>
 
-                    </x-app-layout>
-                        </a>
+                            </x-app-layout>
+                    
 
                       
                     </div>
 
-                   
+           
 
-                </div>
-            </div>
+                </div>   
+            </div> <center><strong style ="padding: 25px 50px;" class="card-title">Project Leader</strong><center>
 
         </header><!-- /header -->
         <!-- Header-->
 
-        <!-- <div class="breadcrumbs">
-            <div class="col-sm-4">
-                <div class="page-header float-left">
-                    <div class="page-title">
-                       
-                    </div>
-                </div>
-            </div> -->
+       
 
-<div class="col-lg-10">
-    <div class="card">
-        <div class="card-header">
-            <strong><center>Project Registration Form</center></strong> 
-        <div class="card-body card-block">
-            <form action="/add" method="post" enctype="multipart/form-data" class="form-horizontal">
-            @csrf
-                <div class="row form-group">
-                    <div class="col col-md-3"><label for="select" class=" form-control-label">Project Type</label></div>
-                    <div class="col-12 col-md-9">
-                        <select name="select" id="select" class="form-control">
-                           
-                            <option value="1">Consultancy project</option>
-                            <option value="2">Research grant project</option>
-                           
-                        </select>
-                    </div>
-                </div>
+        <div class="content mt-3">
+            <div class="animated fadeIn">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Manage Project</strong>
+                            </div>
+                            <div class="card-body">
+                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                    <thead>
+                                    
+                                        <tr>
+                                            <th>NO</th>
+                                            <th>Project Type</th>
+                                            <th>Project Name</th>
+                                            <th>Project Leader</th>
+                                    
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach ($x as $paper)
+                                     @if($paper->id)
+                                        <tr>
+                                            <td>@php($count=0)@php($count++) {{$count++}}</td>
+                                            <td>
+                                                @if($paper->project_type=='1') 
+                                            
+                                                    Consultancy Project
+                                            
+                                                @else
+                                            
+                                                    Research Grant Project
+                                            
+                                                @endif
+                                            
+                                            <td>{{$paper->project_name}}</td>
+
+                                            <td>
+                                                
+                                            
+                                                    {{$paper->name}}
+                                            
+                                                
+                                            </td>
+
+                                            <td>
+                                 
+                                                     <a href="{{"update/".$paper->project_id}}">
+                                                    <button type="button" class="btn btn-primary">Edit </button>
+                                                </a> </href> 
+                                                
+                                                
+                                               
+                                               
+                                              
+                                            </td>
+                                        </tr>
+                                        
+                                        @endif
+                                        @endforeach
+                                        
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="modal fade" id="demoModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                         <div class="modal-header">
+                                            <h4 class="modal-title" align="center"><b>Edit Project </b></h4>
                     
-                <div class="row form-group">
-                    <div class="col col-md-3"><label for="text-input" class=" form-control-label">Project Name</label></div>
-                    <div class="col-12 col-md-9"><input type="text" id="text-input" name="project" placeholder="Enter project" class="form-control"><small class="form-text text-muted"></small></div>
-                </div>
+                                        </div>
+                                            <div class="modal-body">
+                                                 <form action="/edit" method="POST">
+                                                 @csrf
+                                                        <div class="box-body">
+          
+                                                                <div class="form-group">
+                                                                     <label for="exampleInputEmail1">Project Type</label> 
+                    
+                                                                         <select name="select" id="select" class="form-control">
+                           
+                                                                                <option value="1">Consultancy project</option>
+                                                                                <option value="2">Research grant project</option>
+                           
+                                                                         </select>
+                    
+                                                                </div>
 
-                <div class="row form-group">
-                    <div class="col col-md-3"><label for="select" class=" form-control-label">Project Leader</label></div>
-                    <div class="col-12 col-md-9">
-                        <select name="select1" id="select" class="form-control">
-                        @foreach($data as $data)
-                       
-                        <option value="{{ $data->role=='1' }}">{{ $data->name }}</option>
-                        @endforeach
-                        </select>
+                                                                <div class="form-group">
+                                                                <label for="exampleInputEmail1">Project Name</label> 
+                                                                    <input type="text" class="form-control" name="username" placeholder="Enter username" value="">
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                <label for="exampleInputEmail1">Project Type</label> 
+                    
+                                                                     <select name="select" id="select" class="form-control">
+                           
+                                                                        <option value="1">Consultancy project</option>
+                                                                        <option value="2">Research grant project</option>
+                           
+                                                                    </select>
+                    
+                                                 </div>
+                        
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div> 
+                        </div>
                     </div>
+
+
                 </div>
-              
-</div>
-                 
-</div>
-
-           
-     
-        <div class="card-footer">
-            <button type="submit" class="btn btn-primary btn-sm">
-                <i class="fa fa-dot-circle-o"></i> Submit
-            </button>
-            <button type="reset" class="btn btn-danger btn-sm">
-                <i class="fa fa-ban"></i> Reset
-            </button>
-        </div>
-        </form>
-    </div>
-</div><!-- .animated -->
-</div><!-- .content -->
+            </div><!-- .animated -->
+        </div><!-- .content -->
 
 
-</div><!-- /#right-panel -->
+    </div><!-- /#right-panel -->
 
-<!-- Right Panel -->
-
-
-<script src="vendors/jquery/dist/jquery.min.js"></script>
-<script src="vendors/popper.js/dist/umd/popper.min.js"></script>
-<script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="assets/js/main.js"></script>
+    <!-- Right Panel -->
 
 
-<script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-<script src="vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
-<script src="vendors/jszip/dist/jszip.min.js"></script>
-<script src="vendors/pdfmake/build/pdfmake.min.js"></script>
-<script src="vendors/pdfmake/build/vfs_fonts.js"></script>
-<script src="vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-<script src="vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-<script src="vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
-<script src="assets/js/init-scripts/data-table/datatables-init.js"></script>
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
 
 
+    <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="vendors/jszip/dist/jszip.min.js"></script>
+    <script src="vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="assets/js/init-scripts/data-table/datatables-init.js"></script>
+
+  
 </body>
 
 </html>
-
-

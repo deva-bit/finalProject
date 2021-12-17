@@ -24,3 +24,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 Route::get("redirect",[homeControl::class,'redirectFunct']);
 Route::POST("add",[homeControl::class,'saveData']);
+Route::get("/manageproject",[homeControl::class,'manager']);
+
+Route::get("upd/{id}",[homeControl::class,'showdata']);
+Route::POST("editproject",[homeControl::class,'update']);
+
+Route::get("del/{project_id}",[homeControl::class,'deleteStud']);
+
+Route::get("/leader",[homeControl::class,'leader']);
