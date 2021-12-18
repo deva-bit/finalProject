@@ -31,4 +31,5 @@ Route::POST("editproject",[homeControl::class,'update']);
 
 Route::get("del/{project_id}",[homeControl::class,'deleteStud']);
 
-Route::get("/leader",[homeControl::class,'leader']);
+
+Route::get("updateleader/{ject_id}",[homeControl::class,'leader']);

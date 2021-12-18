@@ -63,9 +63,11 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                 <li class="active">
-                        <a href="{{url('/redirect')}}"> <i class="menu-icon fa fa-pencil-square-o"></i>View Project </a>
+                        <a href="{{url('/redirect')}}"> <i class="menu-icon fa fa-pencil-square-o"></i>Create Project </a>
                 </li>
-          \
+                <li class="active">
+                        <a href="{{url('/manageproject')}}"> <i class="menu-icon fa fa-dashboard"></i>Manage Project </a>
+                </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -109,7 +111,7 @@
            
 
                 </div>   
-            </div> <center><strong style ="padding: 25px 50px;" class="card-title">Project Leader</strong><center>
+            </div> <center><strong style ="padding: 25px 50px;" class="card-title">Project Manager</strong><center>
 
         </header><!-- /header -->
         <!-- Header-->
@@ -128,7 +130,6 @@
                             <div class="card-body">
                                 <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                     <thead>
-                                    
                                         <tr>
                                             <th>NO</th>
                                             <th>Project Type</th>
@@ -140,9 +141,8 @@
                                     </thead>
                                     <tbody>
                                     @foreach ($x as $paper)
-                                     @if($paper->id)
                                         <tr>
-                                        <td scope="row">{{ $loop->iteration }}</td>
+                                            <td scope="row">{{ $loop->iteration }}</td>
                                             <td>
                                                 @if($paper->project_type=='1') 
                                             
@@ -157,33 +157,27 @@
                                             <td>{{$paper->project_name}}</td>
 
                                             <td>
-                                                
+                                                @if($paper->project_leader==$paper->id)
                                             
                                                     {{$paper->name}}
                                             
-                                                
+                                                @endif
                                             </td>
 
                                             <td>
-                                            <a href="">
-                                                <button type="button" class="btn btn-warning">View </button>
-                                                </a> </href> 
-                                            <a href="{{"updateleader/".$paper->project_id}}">
+                                 
+                                               
+                                                <a href="{{"upd/".$paper->project_id}}">
                                                 <button type="button" class="btn btn-primary">Edit </button>
                                                 </a> </href> 
-                                 
-                                                   
                                                 
-                                                
-                                               
-                                               
+                                                <a href="{{"del/".$paper->project_id}}">
+                                                   <button  onclick="return confirm('Are you sure you want to delete this entry?')" class= "btn btn-danger">Delete</button>
+                                                </a> </href> 
                                               
                                             </td>
                                         </tr>
-                                        
-                                        @endif
                                         @endforeach
-                                        
                                         </tr>
                                     </tbody>
                                 </table>
@@ -272,7 +266,7 @@
     <script src="vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
     <script src="assets/js/init-scripts/data-table/datatables-init.js"></script>
 
-  
+   
 </body>
 
 </html>

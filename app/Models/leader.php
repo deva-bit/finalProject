@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class manager extends Model
+class leader extends Model
 {
     use HasFactory;
+    use HasFactory;
     public $timestamps=false;
-    public $table ="users";
-   
+    public $table ="project_leader";
+    protected $primaryKey = 'leader_id';
 }

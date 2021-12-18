@@ -30,9 +30,9 @@ class homeControl extends Controller
             
             
             $x=DB::table('users')
-    ->join('project_manager','users.id',"=",'project_manager.project_leader')
-    ->get();
-    return view('projectManager.leader',['x'=>$x]);
+            ->join('project_manager','users.id',"=",'project_manager.project_leader')
+            ->get();
+            return view('projectManager.leader',['x'=>$x]);
         }
 
         else
@@ -89,13 +89,11 @@ class homeControl extends Controller
         return redirect()->back();
     }
 
-    public function leader()
+   function leader($project_id)
     {
-      $data=DB::table('project_leader')
-    ->join('project_manager','project_manager.project_id',"=",'project_leader.project_manager_id') 
-    ->join('users','users.id',"=",'project_leader.users_id')
-    ->get();
-    return view('projectManager.leader',['data'=>$data]);
+        $data=manager::all();
+        $x=project::find($project_id);
+        return view('projectManager.edit_leader',['x'=>$x],['data'=>$data]);
     
  
     }
