@@ -146,8 +146,7 @@
                                             <td>
                                                 @if($paper->project_type=='1') 
                                             
-                                                    Consultancy Project
-                                            
+                                                    Consultancy Project 
                                                 @else
                                             
                                                     Research Grant Project
