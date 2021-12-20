@@ -27,10 +27,18 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+<style>
+    body {
+        background-image: url('front.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: 100% 100%;
+}
 
+    </style>
 </head>
 
-<body>
+
 
 
     <!-- Left Panel -->
@@ -88,8 +96,12 @@
         </header><!-- /header -->
         <!-- Header-->
 
-
-     
+<body>
+<div class="container">
+ 
+  <div class="centered">Centereddsho;VVVpjvpsdjkvpokjdzfp'ovkjdfpovkjfdp'vkj'fdrpvk'k</div>
+</div>
+</body>   
     <!-- Right Panel -->
 
     <script src="vendors/jquery/dist/jquery.min.js"></script>

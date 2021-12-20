@@ -63,7 +63,7 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                 <li class="active">
-                        <a href="{{url('/redirect')}}"> <i class="menu-icon fa fa-pencil-square-o"></i>View Project </a>
+                        <a href="{{url('/redirect')}}"> <i class="menu-icon fa fa-dashboard"></i>Manage Project </a>
                 </li>
           \
                 </ul>
@@ -165,9 +165,11 @@
                                             </td>
 
                                             <td>
-                                            <a href="">
+                                          
+                                            <a href="{{"viewleader/".$paper->project_id}}">
                                                 <button type="button" class="btn btn-warning">View </button>
                                                 </a> </href> 
+                                                
                                             <a href="{{"updateleader/".$paper->project_id}}">
                                                 <button type="button" class="btn btn-primary">Edit </button>
                                                 </a> </href> 

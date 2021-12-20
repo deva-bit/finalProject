@@ -22,8 +22,9 @@
     <link rel="stylesheet" href="../vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="../vendors/selectFX/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="../vendors/jqvmap/dist/jqvmap.min.css">
+    <link rel="stylesheet" href="../vendors/selectFX/css/cs-skin-elastic.css">
 
-
+    <link rel="stylesheet" href="../vendors/chosen/chosen.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
@@ -124,9 +125,9 @@
             
             <strong><center>Edit Project</center></strong> 
         <div class="card-body card-block">
-            <form action="/editproject" method="GET" enctype="multipart/form-data" class="form-horizontal">
+        <form action="/editleader" method="post" enctype="multipart/form-data" class="form-horizontal">    
             @csrf
-           
+            <input type="hidden" value="{{$x['project_id']}}" name="leader_id">
                 <div class="row form-group">
                     <div class="col col-md-3"><label for="select" class=" form-control-label">Project Type</label></div>
                     <div class="col-12 col-md-9">
@@ -164,7 +165,7 @@
 
                 <div class="row form-group">
                     <div class="col col-md-3"><label for="password-input" class=" form-control-label">Start Date</label></div>
-                    <div class="col-12 col-md-9"><input type="date" id="rd" name="sd" placeholder="Enter Start Date" class="form-control"><small class="help-block form-text"></small></div>
+                    <div class="col-12 col-md-9"><input type="date" id="rd" name="sd" value="" class="form-control"><small class="help-block form-text"></small></div>
                 </div>
 
                 <div class="row form-group">
@@ -174,41 +175,42 @@
 
                 <div class="row form-group">
                     <div class="col col-md-3"><label for="text-input" class=" form-control-label">Duration</label></div>
-                    <div class="col-12 col-md-9"><input type="text" id="text-input" placeholder="Enter Duration in months"  class="form-control"><small class="form-text text-muted"></small></div>
+                    <div class="col-12 col-md-9"><input type="text" id="text-input" name="duration" placeholder="Enter Duration in months"  class="form-control"><small class="form-text text-muted"></small></div>
                 </div>
 
                 <div class="row form-group">
                     <div class="col col-md-3"><label for="text-input" class=" form-control-label">Cost</label></div>
-                    <div class="col-12 col-md-9"><input type="text" id="text-input" placeholder="Enter Cost exm: RM2000"  class="form-control"><small class="form-text text-muted"></small></div>
+                    <div class="col-12 col-md-9"><input type="text" id="text-input" name="cost" placeholder="Enter Cost exm: RM2000"  class="form-control"><small class="form-text text-muted"></small></div>
                 </div>
 
                 <div class="row form-group">
                     <div class="col col-md-3"><label for="text-input" class=" form-control-label">Client Name</label></div>
-                    <div class="col-12 col-md-9"><input type="text" id="text-input" placeholder="Enter Client Name"  class="form-control"><small class="form-text text-muted"></small></div>
+                    <div class="col-12 col-md-9"><input type="text" id="text-input" name="client" placeholder="Enter Client Name"  class="form-control"><small class="form-text text-muted"></small></div>
                 </div>
 
-                <div class="form-group row">
- <label for="premname" class="col-sm-5 col-form-label">Area</label>
-    <div class="col-sm-7">
-        <div class="input-group mb-5">
-            <select  multiple class="selectpicker" style="width: 100%;" name="">
-            @foreach($data as $d)
+                <div class="row form-group">
+                    <div class="col col-md-3"><label for="select" class=" form-control-label">Project Members</label></div>
+                        <div class="col-12 col-md-9">   
+        
+                            <select name="select5" data-placeholder="Choose Team Members " multiple class="standardSelect" class="form-control">
+                                @foreach($data as $d)
                      
-                        @if ($d->role=='2') 
-                     
-                        <option value="" selected disabled hidden>Select </option>
-                        <option value="{{$d->id }}">{{ $d->name }}</option>
-                        @endif
-                      
-                         @endforeach  
-                        </select>
-                    </div>
-                </div> </div>
+                                @if ($d->role=='2') 
+                            
+                                
+                                <option value="{{$d->id }}">{{ $d->name }}</option>
+                                @endif
+                            
+                                @endforeach  
+                                </select>
+
+                        </div>
+                </div>
 
                 <div class="row form-group">
                     <div class="col col-md-3"><label for="select" class=" form-control-label">Project progress</label></div>
                     <div class="col-12 col-md-9">
-                        <select  name="select">
+                        <select  name="select6" class="form-control">
                             <option value="" selected disabled hidden>Select Project Progress </option>
                             <option value="1">Inception</option>
                             <option value="2">Milestone 1</option>
@@ -219,11 +221,12 @@
                         </select>
                     </div>
                 </div>
+       
 
                 <div class="row form-group">
                     <div class="col col-md-3"><label for="select" class=" form-control-label">Project Status</label></div>
                     <div class="col-12 col-md-9">
-                        <select  name="select" id="select" class="form-control">
+                        <select  name="select7" id="select" class="form-control">
                             <option value="" selected disabled hidden>Select Project Status </option>
                             <option value="1">On track</option>
                             <option value="2">Delayed</option>
@@ -260,6 +263,7 @@
 <script src="../vendors/popper.js/dist/umd/popper.min.js"></script>
 <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="../assets/js/main.js"></script>
+<script src="../vendors/chosen/chosen.jquery.min.js"></script>
 
 
 <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -292,6 +296,16 @@ $("select").change(function(e) {
     $($(this).data("default")).prop("selected", true);
 });
     </script>
+
+<script>
+    jQuery(document).ready(function() {
+        jQuery(".standardSelect").chosen({
+            disable_search_threshold: 10,
+            no_results_text: "Oops, nothing found!",
+            width: "100%"
+        });
+    });
+</script>
 
 </body>
 
