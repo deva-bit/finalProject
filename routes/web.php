@@ -36,3 +36,4 @@ Route::get("updateleader/{ject_id}",[homeControl::class,'leader']);
 Route::POST("editleader",[homeControl::class,'updateleader']);
 
 Route::get("viewleader/{project_id}",[homeControl::class,'viewleader']);
+Route::get("viewmember/{project_id}",[homeControl::class,'viewmember']);

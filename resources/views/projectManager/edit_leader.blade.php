@@ -127,7 +127,7 @@
         <div class="card-body card-block">
         <form action="/editleader" method="post" enctype="multipart/form-data" class="form-horizontal">    
             @csrf
-            <input type="hidden" value="{{$x['project_id']}}" name="leader_id">
+            <input type="hidden" value="{{$x['project_id']}}" name="project_id">
                 <div class="row form-group">
                     <div class="col col-md-3"><label for="select" class=" form-control-label">Project Type</label></div>
                     <div class="col-12 col-md-9">
@@ -192,7 +192,7 @@
                     <div class="col col-md-3"><label for="select" class=" form-control-label">Project Members</label></div>
                         <div class="col-12 col-md-9">   
         
-                            <select name="select5" data-placeholder="Choose Team Members " multiple class="standardSelect" class="form-control">
+                            <select name="select5[]" data-placeholder="Choose Team Members " multiple class="standardSelect" class="form-control">
                                 @foreach($data as $d)
                      
                                 @if ($d->role=='2') 
