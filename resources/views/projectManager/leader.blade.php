@@ -165,7 +165,8 @@
                                             </td>
 
                                             <td>
-                                          
+                                           
+                                            @if($paper->project_leader == auth()->id())
                                             <a href="{{"viewleader/".$paper->project_id}}">
                                                 <button type="button" class="btn btn-warning">View </button>
                                                 </a> </href> 
@@ -174,8 +175,11 @@
                                                 <button type="button" class="btn btn-primary">Edit </button>
                                                 </a> </href> 
                                  
-                                                   
-                                                
+                                            @else
+                                            
+                                                <a> Not allowed</a> 
+                                                @endif      
+                                            
                                                 
                                                
                                                

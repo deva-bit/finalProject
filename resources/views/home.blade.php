@@ -1,101 +1,168 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <!-- Required meta tags -->
+
+  <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>URND</title>
-    <meta name="description"
-          content="Knight is a beautiful Bootstrap 4 template for product landing pages."/>
+    <meta name="description" content="">
+    <meta name="author" content="TemplateMo">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <!--Inter UI font-->
-    <link href="https://rsms.me/inter/inter-ui.css" rel="stylesheet">
+    <title>Finance Business HTML5 Template</title>
 
-    <!--vendors styles-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor1/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Bootstrap CSS / Color Scheme -->
-    <link rel="stylesheet" href="../css1/default.css" id="theme-color">
-</head>
-<body>
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="../assets1/css/fontawesome.css">
+    <link rel="stylesheet" href="../assets1/css/templatemo-finance-business.css">
+    <link rel="stylesheet" href="../assets1/css/owl.css">
+<!--
 
-<!--navigation-->
-<section class="smart-scroll">
-    <div class="container-fluid">
-        <nav class="navbar navbar-expand-md navbar-dark">
-       
-        <img src="../urnd.jpg"style="height: 80px; width: 130px"alt="Logo">
-            <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse"
-                    data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span data-feather="grid"></span>
-            </button>
-            <div  class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                    @if (Route::has('login'))
+Finance Business TemplateMo
+
+https://templatemo.com/tm-545-finance-business
+
+-->
+  </head>
+
+  <body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+
+    <!-- Header -->
+  
+    </div>
+
+    <header class="">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+         <img src="urnd.jpg">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              
+              
+            
+                <li class="nav-item">                       
+              
+             
+              @if (Route::has('login'))
                                 <div class="hidden fixed top-50 right-0  sm:block ">
                             @auth
-                
+                            <li class="nav-item">  
                             <x-app-layout>
 
-                            </x-app-layout>
-                      
+                            </x-app-layout></li>  
+                            </li>
                              @else
-                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+              <li class="nav-item">           <a href="{{ route('login') }}" class="nav-link">Log in</a>  </li>  
 
                         @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                        <li class="nav-item">        <a href="{{ route('register') }}" class="nav-link">Register</a></li>  
                         @endif
                     @endauth
                 </div>
             @endif
-                    </li>
+            </ul> </li>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="main-banner header-text" id="top">
+        <div class="Modern-Slider">
+          <!-- Item -->
+          <div class="item item-1">
+            <div class="img-fill">
+                <div class="text-content">
                 
-                </ul>
+                  <h4>UNITEN R&D Sdn Bhd (URND)</h4>
+                
+                
+                </div>
             </div>
-        </nav>
-    </div>
-</section>
-
-<!--hero header-->
-<section class="py-7 py-md-0 bg-hero" id="home">
-    <div  class="container">
-
-        <div class="row vh-md-100">
-            <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center">
-
-                <h1 class="heading-black text-capitalize">UNITEN R&D Sdn Bhd (URND)</h1>
-               
-              
+          </div>
+          <!-- // Item -->
+          <!-- Item -->
+          <div class="item item-2">
+            <div class="img-fill">
+                <div class="text-content">
+                
+                  <h4>UNITEN R&D Sdn Bhd (URND) </h4>
+                 
+                
+                </div>
             </div>
+          </div>
+          <!-- // Item -->
+          <!-- Item -->
+          <div class="item item-3">
+            <div class="img-fill">
+                <div class="text-content">
+                  
+                  <h4>UNITEN R&D Sdn Bhd (URND) </h4>
+                 
+                
+                </div>
+            </div>
+          </div>
+          <!-- // Item -->
         </div>
     </div>
-</section>
+    <!-- Banner Ends Here -->
+
+  
+    </div>
 
 
+    <!-- Footer Starts Here -->
+    
+    <div class="sub-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <p>URND
+            
+            </a></p>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- Bootstrap core JavaScript -->
+    <script src="../vendor1/jquery/jquery.min.js"></script>
+    <script src="../vendor1/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Additional Scripts -->
+    <script src="../assets1/js/custom.js"></script>
+    <script src="../assets1/js/owl.js"></script>
+    <script src="../assets1/js/slick.js"></script>
+    <script src="../assets1/js/accordions.js"></script>
 
+    <script language = "text/Javascript"> 
+      cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+      function clearField(t){                   //declaring the array outside of the
+      if(! cleared[t.id]){                      // function makes it static and global
+          cleared[t.id] = 1;  // you could use true and false, but that's more typing
+          t.value='';         // with more chance of typos
+          t.style.color='#fff';
+          }
+      }
+    </script>
 
-
-
-
-<!--scroll to top-->
-<div class="scroll-top">
-    <i class="fa fa-angle-up" aria-hidden="true"></i>
-</div>
-
-
-
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.7.3/feather.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-<script src="../js1/scripts.js"></script>
-</body>
+  </body>
 </html>

@@ -175,12 +175,12 @@
 
                 <div class="row form-group">
                     <div class="col col-md-3"><label for="text-input" class=" form-control-label">Duration</label></div>
-                    <div class="col-12 col-md-9"><input type="text" id="text-input" name="duration" value="{{$x['duration']}} month"  class="form-control"disabled><small class="form-text text-muted"></small></div>
+                    <div class="col-12 col-md-9"><input type="text" id="text-input" name="duration" value="{{$x['duration']}}"  class="form-control"disabled><small class="form-text text-muted"></small></div>
                 </div>
 
                 <div class="row form-group">
                     <div class="col col-md-3"><label for="text-input" class=" form-control-label">Cost</label></div>
-                    <div class="col-12 col-md-9"><input type="text" id="text-input" name="cost" value="RM {{$x['cost']}}"  class="form-control" disabled><small class="form-text text-muted"></small></div>
+                    <div class="col-12 col-md-9"><input type="text" id="text-input" name="cost" value="{{$x['cost']}}"  class="form-control" disabled><small class="form-text text-muted"></small></div>
                 </div>
 
                 <div class="row form-group">
@@ -192,13 +192,13 @@
                     <div class="col col-md-3"><label for="select" class=" form-control-label">Project Members</label></div>
                         <div class="col-12 col-md-9">   
         
-                            <select name="select5[]" data-placeholder="SelectTeam Members " multiple class="standardSelect" class="form-control"disabled>
+                            <select name="select5" data-placeholder="SelectTeam Members " multiple class="standardSelect" class="form-control"disabled>
                                 @foreach($data as $d)
                                  
                                  @if ($d->role=='2') 
                                  @foreach(explode(',', $x->project_member) as $string)
                                 
-                                <option value="{{$string}}"{{$string==$d->id ? 'selected="selected"' : '' }}">{{ $d->name }}</option>
+                                <option value="{{$x->project_member}}"{{$string==$d->id ? 'selected="selected"' : '' }}">{{ $d->name }}</option>
                                
                                 @endforeach  
                                     @endif

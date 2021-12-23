@@ -118,7 +118,15 @@ class homeControl extends Controller
        return redirect('/redirect');
       
       
-
+    }
+    function viewmanager($project_id)
+    {
+        
+        $data=manager::all();
+        $x=project::find($project_id);
+       
+        return view('projectManager.view_manager',['x'=>$x],['data'=>$data]);
+        
     }
     function viewleader($project_id)
     {

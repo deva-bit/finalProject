@@ -34,6 +34,6 @@ Route::get("del/{project_id}",[homeControl::class,'deleteStud']);
 
 Route::get("updateleader/{ject_id}",[homeControl::class,'leader']);
 Route::POST("editleader",[homeControl::class,'updateleader']);
-
+Route::get("viewmanager/{project_id}",[homeControl::class,'viewmanager']);
 Route::get("viewleader/{project_id}",[homeControl::class,'viewleader']);
 Route::get("viewmember/{project_id}",[homeControl::class,'viewmember']);

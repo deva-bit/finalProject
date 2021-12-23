@@ -165,27 +165,27 @@
 
                 <div class="row form-group">
                     <div class="col col-md-3"><label for="password-input" class=" form-control-label">Start Date</label></div>
-                    <div class="col-12 col-md-9"><input type="date" id="rd" name="sd" value="" class="form-control"><small class="help-block form-text"></small></div>
+                    <div class="col-12 col-md-9"><input type="date" id="rd" name="sd" value="{{$x['start_date']}}" class="form-control"><small class="help-block form-text"></small></div>
                 </div>
 
                 <div class="row form-group">
                     <div class="col col-md-3"><label for="password-input" class=" form-control-label">End Date</label></div>
-                    <div class="col-12 col-md-9"><input type="date" id="rd" name="ed" placeholder="Enter End Date" class="form-control"><small class="help-block form-text"></small></div>
+                    <div class="col-12 col-md-9"><input type="date" id="rd" name="ed" value="{{$x['end_date']}}" class="form-control"><small class="help-block form-text"></small></div>
                 </div>
 
                 <div class="row form-group">
                     <div class="col col-md-3"><label for="text-input" class=" form-control-label">Duration</label></div>
-                    <div class="col-12 col-md-9"><input type="text" id="text-input" name="duration" placeholder="Enter Duration in months"  class="form-control"><small class="form-text text-muted"></small></div>
+                    <div class="col-12 col-md-9"><input type="text" id="text-input" name="duration" value="{{$x['duration']}}" class="form-control"><small class="form-text text-muted"></small></div>
                 </div>
 
                 <div class="row form-group">
                     <div class="col col-md-3"><label for="text-input" class=" form-control-label">Cost</label></div>
-                    <div class="col-12 col-md-9"><input type="text" id="text-input" name="cost" placeholder="Enter Cost exm: RM2000"  class="form-control"><small class="form-text text-muted"></small></div>
+                    <div class="col-12 col-md-9"><input type="text" id="text-input" name="cost" value="{{$x['cost']}}"  class="form-control"><small class="form-text text-muted"></small></div>
                 </div>
 
                 <div class="row form-group">
                     <div class="col col-md-3"><label for="text-input" class=" form-control-label">Client Name</label></div>
-                    <div class="col-12 col-md-9"><input type="text" id="text-input" name="client" placeholder="Enter Client Name"  class="form-control"><small class="form-text text-muted"></small></div>
+                    <div class="col-12 col-md-9"><input type="text" id="text-input" name="client" value="{{$x['client']}}"  class="form-control"><small class="form-text text-muted"></small></div>
                 </div>
 
                 <div class="row form-group">
@@ -193,13 +193,17 @@
                         <div class="col-12 col-md-9">   
         
                             <select name="select5[]" data-placeholder="Choose Team Members " multiple class="standardSelect" class="form-control">
-                                @foreach($data as $d)
-                     
-                                @if ($d->role=='2') 
-                            
+                            @foreach($data as $d)
+                                 
+                                 @if ($d->role=='2') 
+                                 @php
+                                 $string=explode(',', $x->project_member)
+                                 @endphp 
                                 
-                                <option value="{{$d->id }}">{{ $d->name }}</option>
-                                @endif
+                                <option <?php if (in_array($d->id,$string)) echo 'selected="selected"';?> value="{{ $d->id }}">{{ $d->name }}</option>
+                               
+                       
+                                    @endif
                             
                                 @endforeach  
                                 </select>
@@ -212,11 +216,12 @@
                     <div class="col-12 col-md-9">
                         <select  name="select6" class="form-control">
                             <option value="" selected disabled hidden>Select Project Progress </option>
-                            <option value="1">Inception</option>
-                            <option value="2">Milestone 1</option>
-                            <option value="3">Milestone 2</option>
-                            <option value="4">Final Report</option>
-                            <option value="5">Closing</option>
+                            <option {{$x['project_stage'] == '1' ? 'selected' : '' }} value="1">Inception</option>
+                            <option {{$x['project_stage'] == '2' ? 'selected' : '' }} value="2">Milestone 1</option>
+                            <option {{$x['project_stage'] == '3' ? 'selected' : '' }} value="3">Milestone 2</option>
+                            <option {{$x['project_stage'] == '4' ? 'selected' : '' }} value="4">Final Report</option>
+                            <option {{$x['project_stage'] == '5' ? 'selected' : '' }} value="5">Closing</option>
+
                            
                         </select>
                     </div>
@@ -228,10 +233,10 @@
                     <div class="col-12 col-md-9">
                         <select  name="select7" id="select" class="form-control">
                             <option value="" selected disabled hidden>Select Project Status </option>
-                            <option value="1">On track</option>
-                            <option value="2">Delayed</option>
-                            <option value="3">Extended</option>
-                            <option value="4">Completed</option>
+                            <option {{$x['project_status'] == '1' ? 'selected' : '' }} value="1">On track</option>
+                        <option {{$x['project_status'] == '2' ? 'selected' : '' }} value="2">Delayed</option>
+                        <option {{$x['project_status'] == '3' ? 'selected' : '' }} value="3">Extended</option>
+                        <option {{$x['project_status'] == '4' ? 'selected' : '' }} value="4">Completed</option>
                             
                             
                         </select>

@@ -164,7 +164,9 @@
                                             </td>
 
                                             <td>
-                                 
+                                                <a href="{{"viewmanager/".$paper->project_id}}">
+                                                <button type="button" class="btn btn-warning">View </button>
+                                                </a> </href> 
                                                
                                                 <a href="{{"upd/".$paper->project_id}}">
                                                 <button type="button" class="btn btn-primary">Edit </button>
